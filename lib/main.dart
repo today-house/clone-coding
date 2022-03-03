@@ -25,13 +25,8 @@ class MyApp extends StatelessWidget {
     // context.read<AuthProvider>().
     return MultiProvider(
       providers: [
-        Provider<AuthProvider>(
-          create: (_) => AuthProvider(FirebaseAuth.instance),
-        ),
-        StreamProvider<User?>(
-          create: (context) => context.read<AuthProvider>().authState,
-          initialData: null,
-        ),
+        Provider<AuthProvider>(create: (_) => AuthProvider(FirebaseAuth.instance)),
+        StreamProvider<User?>(create: (context) => context.read<AuthProvider>().authState, initialData: null),
       ],
       child: MaterialApp(
         // initialRoute: '/',

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:today_house/provider/sample/counter.dart';
+import 'package:today_house/provider/auth/auth_provider.dart';
 
 class SampleScreen extends StatelessWidget {
   const SampleScreen({Key? key}) : super(key: key);
@@ -9,24 +9,21 @@ class SampleScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Example'),
+        title: const Text('기본정보 입력'),
       ),
       body: Center(
         child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text('You have pushed the button this many times:'),
+          children: <Widget>[
+            const Text('기본 정'),
+            // ElevatedButton(
+            //   onPressed: () {
+            //     context.read<AuthProvider>().signOut();
+            //   },
+            //   child: const Text('로그아웃'),
+            // )
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        key: const Key('increment_floatingActionButton'),
-        onPressed: () => context.read<Counter>().increment(),
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
 }
-
