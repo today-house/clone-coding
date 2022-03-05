@@ -3,7 +3,7 @@ import 'package:today_house/infra/helpers/logger.dart';
 
 class AuthProvider {
   final FirebaseAuth _firebaseAuth;
-  late final String _verificationId;
+  late String _verificationId;
   //FirebaseAuth instance
   AuthProvider(this._firebaseAuth);
 
@@ -67,7 +67,7 @@ class AuthProvider {
   /// 닉네임 이메일 업데이트
   void updateProfile(String nickName, String email){
     _firebaseAuth.currentUser?.updateDisplayName(nickName);
-    _firebaseAuth.currentUser?.updateEmail(email);
+    // _firebaseAuth.currentUser?.updateEmail(email);
   }
 
 }

@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:today_house/infra/helpers/logger.dart';
 import 'package:today_house/provider/auth/auth_provider.dart';
+import 'package:today_house/screen/home/home_screen.dart';
+import 'package:today_house/screen/login/add_profile_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -15,11 +18,11 @@ class _LoginScreenState extends State<LoginScreen> {
   final _phoneNumberController = TextEditingController();
   final _smsController = TextEditingController();
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _phoneNumberController.text = '11-2222-3333'; /// test 번호 인증번호 111111
-  // }
+  @override
+  void initState() {
+    super.initState();
+    _phoneNumberController.text = '11-2222-3333'; /// test 번호 인증번호 111111
+  }
 
   @override
   void dispose() {
@@ -30,11 +33,22 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: _phoneTab(context),
-      ),
-    );
+    final firebaseUser = context.watch<User?>();
+
+    if (firebaseUser != null) {
+      // 로그인한 경우
+      if(firebaseUser.displayName != null){
+        return const HomeScreen();
+      }else{
+        return const AddProfileScreen();
+      }
+    }else{
+      return SafeArea(
+        child: Scaffold(
+          body: _phoneTab(context),
+        ),
+      );
+    }
   }
 
   Widget _phoneTab(BuildContext context) {

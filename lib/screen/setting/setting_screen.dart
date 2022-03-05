@@ -23,8 +23,9 @@ class SettingScreen extends StatelessWidget {
             title: const Text('sign out'),
             trailing: ElevatedButton(
               child: const Text('sign out'),
-              onPressed: () async {
+              onPressed: () {
                 context.read<AuthProvider>().signOut();
+                Navigator.pushNamedAndRemoveUntil(context, '/login', (_) => false);
               },
             ),
           )
