@@ -1,4 +1,4 @@
-package com.house.today.today_house
+package com.house.you.your_house
 
 import io.flutter.embedding.android.FlutterActivity
 

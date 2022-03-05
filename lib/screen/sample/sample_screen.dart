@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:today_house/provider/auth/auth_provider.dart';
+import 'package:your_house/provider/auth/auth_provider.dart';
 
 class SampleScreen extends StatelessWidget {
   const SampleScreen({Key? key}) : super(key: key);

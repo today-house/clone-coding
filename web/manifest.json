@@ -1,6 +1,6 @@
 {
-    "name": "today_house",
-    "short_name": "today_house",
+    "name": "your_house",
+    "short_name": "your_house",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

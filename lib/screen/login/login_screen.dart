@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:today_house/infra/helpers/logger.dart';
-import 'package:today_house/provider/auth/auth_provider.dart';
-import 'package:today_house/screen/home/home_screen.dart';
-import 'package:today_house/screen/login/add_profile_screen.dart';
+import 'package:your_house/infra/helpers/logger.dart';
+import 'package:your_house/provider/auth/auth_provider.dart';
+import 'package:your_house/screen/home/home_screen.dart';
+import 'package:your_house/screen/login/add_profile_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

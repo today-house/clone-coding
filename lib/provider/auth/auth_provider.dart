@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:today_house/infra/helpers/logger.dart';
+import 'package:your_house/infra/helpers/logger.dart';
 
 class AuthProvider {
   final FirebaseAuth _firebaseAuth;
