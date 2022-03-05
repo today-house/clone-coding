@@ -64,4 +64,10 @@ class AuthProvider {
     }
   }
 
+  /// 닉네임 이메일 업데이트
+  void updateProfile(String nickName, String email){
+    _firebaseAuth.currentUser?.updateDisplayName(nickName);
+    _firebaseAuth.currentUser?.updateEmail(email);
+  }
+
 }

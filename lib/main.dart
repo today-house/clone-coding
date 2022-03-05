@@ -4,12 +4,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:today_house/provider/auth/auth_provider.dart';
+import 'package:today_house/screen/home/home_screen.dart';
+import 'package:today_house/screen/login/add_profile_screen.dart';
 import 'package:today_house/screen/login/login_screen.dart';
 import 'package:today_house/screen/sample/sample_screen.dart';
 
 import 'router.dart';
-
-/// This is a reimplementation of the default Flutter application using provider + [ChangeNotifier].
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +22,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // context.read<AuthProvider>().
     return MultiProvider(
       providers: [
         Provider<AuthProvider>(create: (_) => AuthProvider(FirebaseAuth.instance)),
@@ -45,8 +44,15 @@ class Authenticate extends StatelessWidget {
     final firebaseUser = context.watch<User?>();
 
     if (firebaseUser != null) {
-      return const SampleScreen();
+      // 로그인한 경우
+      if(firebaseUser.displayName != null){
+        return const HomeScreen();
+      }else{
+        return const AddProfileScreen();
+      }
+    }else{
+      return const LoginScreen();
     }
-    return const LoginScreen();
+
   }
 }

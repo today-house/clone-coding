@@ -15,6 +15,19 @@ class _LoginScreenState extends State<LoginScreen> {
   final _phoneNumberController = TextEditingController();
   final _smsController = TextEditingController();
 
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _phoneNumberController.text = '11-2222-3333'; /// test 번호 인증번호 111111
+  // }
+
+  @override
+  void dispose() {
+    _phoneNumberController.dispose();
+    _smsController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -39,26 +52,27 @@ class _LoginScreenState extends State<LoginScreen> {
           TextFormField(
             keyboardType: TextInputType.phone,
             controller: _phoneNumberController,
-            decoration: const InputDecoration(labelText: '전화번호'),
-          ),
-          ElevatedButton(
-            child: const Text('문자 전송'),
-            onPressed: () {
-              log.i('📞 $_dialCode ${_phoneNumberController.text.trim()}');
-              context.read<AuthProvider>().verifyPhoneNumber(_dialCode, _phoneNumberController.text.trim());
-            },
+            decoration: InputDecoration(
+                labelText: '전화번호',
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    log.i('📞 $_dialCode ${_phoneNumberController.text.trim()}');
+                    context.read<AuthProvider>().verifyPhoneNumber(_dialCode, _phoneNumberController.text.trim());
+                  },
+                  icon: const Icon(Icons.send),
+
+                )),
           ),
           TextFormField(
             keyboardType: TextInputType.phone,
             controller: _smsController,
             maxLength: 6,
-            decoration: const InputDecoration(labelText: '인증번호'),
-          ),
-          ElevatedButton(
-            child: const Text('로그인'),
-            onPressed: () {
-              context.read<AuthProvider>().signInWithPhoneNumber(_smsController.text.trim());
-            },
+            decoration: InputDecoration(labelText: '인증번호', suffix: ElevatedButton(
+              child: const Text('인증'),
+              onPressed: () {
+                context.read<AuthProvider>().signInWithPhoneNumber(_smsController.text.trim());
+              },
+            )),
           ),
         ],
       ),

@@ -15,12 +15,12 @@ class SampleScreen extends StatelessWidget {
         child: Column(
           children: <Widget>[
             const Text('기본 정'),
-            // ElevatedButton(
-            //   onPressed: () {
-            //     context.read<AuthProvider>().signOut();
-            //   },
-            //   child: const Text('로그아웃'),
-            // )
+            ElevatedButton(
+              onPressed: () {
+                context.read<AuthProvider>().signOut();
+              },
+              child: const Text('로그아웃'),
+            )
           ],
         ),
       ),
